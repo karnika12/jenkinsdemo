@@ -8,13 +8,6 @@ pipeline {
       }
     }
     
-     stage ('Publish to DockerHub') {
-      steps {
-        withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
-          sh 'docker push dockerimage:""$GIT_COMMIT""'
-         }
-       }
-     }
     stage ('Publish to ECR') {
       steps {
         //sh 'aws ecr-public get-login-password --region eu-west-2 | docker login --username AWS --password-stdin public.ecr.aws/f4z4b0p9'
